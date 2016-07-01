@@ -1,0 +1,4 @@
+---
+ansible_connection: ssh
+ansible_user: grimes
+ansible_password: grimes

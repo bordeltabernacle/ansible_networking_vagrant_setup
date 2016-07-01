@@ -1,9 +1,6 @@
 ---
-ansible_connection: local
+ansible_connection: ssh
 ansible_user: grimes
 ansible_password: grimes
-ansible_shell_executable: ''
-executable: ''
-device_os: ios
-host_key_checking: False
+
 

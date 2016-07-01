@@ -1,0 +1,10 @@
+---
+- name: Show Version
+  hosts: routers
+  gather_facts: no
+  connection: local
+  tasks:
+    - ios_command:
+        commands:
+          - show version
+      register: output

@@ -1,4 +1,0 @@
-[routers]
-router-one
-router-two
-router-three

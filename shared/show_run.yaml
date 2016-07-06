@@ -6,7 +6,7 @@
     - ios_command:
         provider: "{{ cli }}"
         commands:
-          - show version
+          - show run
       register: output
     - debug: var=output.stdout_lines
 

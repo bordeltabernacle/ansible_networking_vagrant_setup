@@ -1,12 +1,10 @@
 ---
 - name: Show Version
-  hosts: all
-  gather_facts: no
-  connection: local
+  hosts: routers
   tasks:
     - ios_command:
         provider: "{{ cli }}"
         commands:
           - show version
       register: output
-    - debug: msg="Output - "{{ output.stdout_lines }}""
+    - debug: msg="{{ output.stdout_lines }}"

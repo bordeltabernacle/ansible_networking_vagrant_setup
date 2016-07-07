@@ -1,0 +1,13 @@
+- name: SCP Image
+  gather_facts: no
+  hosts: routers
+  tasks:
+    - ntc_file_copy:
+        local_file: /home/vagrant/shared/images/c2900-universalk9-mz.SPA.154-3.M3.bin
+        platform: "{{ platform }}"
+        username: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        host: "{{ ansible_host }}"
+        file_system: "flash0:"
+      register: scp
+    - debug: var=scp

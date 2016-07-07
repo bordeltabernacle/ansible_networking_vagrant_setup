@@ -1,4 +1,5 @@
 ---
+platform: cisco_ios_ssh
 cli:
   host: "{{ ansible_host }}"
   username: "{{ ansible_user }}"

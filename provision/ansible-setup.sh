@@ -12,8 +12,17 @@ echo "Adding Ansible repo..."
 sudo apt-add-repository ppa:ansible/ansible > /dev/null 2>&1
 echo "Updating apt-get..."
 sudo apt-get -y update > /dev/null 2>&1
+echo "Installing Git..."
+sudo apt-get -y install git > /dev/null 2>&1
 echo "Installing Ansible..."
 sudo apt-get -y install ansible > /dev/null 2>&1
+echo "Installing ntc-ansible"
+sudo apt-get -y install python-pip > /dev/null 2>&1
+sudo apt-get -y install zlib1g-dev libxml2-dev libxslt-dev python-dev > /dev/null 2>&1
+sudo pip install ntc-ansible > /dev/null 2>&1
+git clone https://github.com/networktocode/ntc-ansible --recursive > /dev/null 2>&1
+sudo rm -r /home/vagrant/shared/library > /dev/null 2>&1
+sudo mv /home/vagrant/ntc-ansible/library /home/vagrant/shared/library > /dev/null 2>&1
 echo "+----------------------------------------+"
 echo "| Ansible Playground Machine Provisioned |"
 echo "+----------------------------------------+"

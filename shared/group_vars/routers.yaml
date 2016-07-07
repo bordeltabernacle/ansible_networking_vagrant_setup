@@ -1,4 +1,6 @@
 ---
+image_one: c2900-universalk9-mz.SPA.154-3.M3.bin
+image_two: c2900-universalk9_npe-mz.SPA.151-4.M1.bin
 platform: cisco_ios_ssh
 cli:
   host: "{{ ansible_host }}"

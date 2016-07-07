@@ -25,5 +25,12 @@
         password: "{{ ansible_password }}"
         host: "{{ ansible_host }}"
         confirm: true
+        timer: 1
       register: reboot
     - debug: var=reboot
+    # - ios_command:
+    #     provider: "{{ cli }}"
+    #     commands:
+    #       - reload in 1
+    #   register: reload
+    # - debug: var=reload.stdout_lines

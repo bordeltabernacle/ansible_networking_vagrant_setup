@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 vagrant_root = File.dirname(__FILE__)
-project_name = "ansible-playground"
+project_name = "acp"
 
 Vagrant.configure(2) do |config|
     config.vm.box = "ubuntu/trusty64"

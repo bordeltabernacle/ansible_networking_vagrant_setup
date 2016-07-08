@@ -5,6 +5,6 @@ router-three ansible_host=192.168.0.3
 
 [routers:vars]
 ansible_connection=local
-ansible_user=grimes
-ansible_password=grimes
+ansible_user=vagrant
+ansible_password=vagrant
 

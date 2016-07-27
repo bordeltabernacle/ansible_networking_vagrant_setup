@@ -1,10 +1,9 @@
-router-one#ter len 0
 router-one#sh run
 Building configuration...
 
-Current configuration : 1154 bytes
+Current configuration : 1284 bytes
 !
-! Last configuration change at 09:47:52 UTC Fri Jul 1 2016
+! Last configuration change at 11:12:26 UTC Wed Jul 27 2016 by vagrant
 version 15.3
 service timestamps debug datetime msec
 service timestamps log datetime msec
@@ -13,6 +12,7 @@ no service password-encryption
 hostname router-one
 !
 boot-start-marker
+boot system flash0:c2900-universalk9-mz.SPA.154-3.M3.bin
 boot-end-marker
 !
 !
@@ -25,6 +25,7 @@ no aaa new-model
 !
 !
 !
+no ip domain lookup
 ip domain name ansible.dev
 ip cef
 no ipv6 cef
@@ -36,7 +37,8 @@ multilink bundle-name authenticated
 license udi pid CISCO2921/K9 sn FCZ1545706V
 !
 !
-username grimes privilege 15 password 0 grimes
+file prompt quiet
+username vagrant privilege 15 secret 5 $1$lGlV$sF4MKyPYZlteNVgGHo9tL1
 !
 redundancy
 !

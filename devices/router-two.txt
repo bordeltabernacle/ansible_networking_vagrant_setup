@@ -1,12 +1,11 @@
-router-two#ter len 0
 router-two#sh run
 Building configuration...
 
-Current configuration : 1335 bytes
+Current configuration : 1489 bytes
 !
-! Last configuration change at 09:42:56 UTC Fri Jul 1 2016
-! NVRAM config last updated at 09:42:57 UTC Fri Jul 1 2016
-! NVRAM config last updated at 09:42:57 UTC Fri Jul 1 2016
+! Last configuration change at 11:08:28 UTC Wed Jul 27 2016 by vagrant
+! NVRAM config last updated at 11:08:29 UTC Wed Jul 27 2016 by vagrant
+! NVRAM config last updated at 11:08:29 UTC Wed Jul 27 2016 by vagrant
 version 15.1
 service timestamps debug datetime msec
 service timestamps log datetime msec
@@ -15,6 +14,7 @@ no service password-encryption
 hostname router-two
 !
 boot-start-marker
+boot system flash0:c2900-universalk9-mz.SPA.154-3.M3.bin
 boot-end-marker
 !
 !
@@ -29,6 +29,7 @@ ip cef
 !
 !
 !
+no ip domain lookup
 ip domain name ansible.dev
 multilink bundle-name authenticated
 !
@@ -39,7 +40,8 @@ crypto pki token default removal timeout 0
 license udi pid CISCO2921/K9 sn FCZ192570GZ
 !
 !
-username grimes privilege 15 password 0 grimes
+file prompt quiet
+username vagrant privilege 15 secret 5 $1$nk0y$K321d7Fx0.Vtni7.1HuDY0
 !
 !
 !

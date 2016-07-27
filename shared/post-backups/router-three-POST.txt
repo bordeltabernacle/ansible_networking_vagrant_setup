@@ -1,8 +1,6 @@
 Building configuration...
 
-Current configuration : 1346 bytes
-!
-! Last configuration change at 13:38:21 UTC Wed Jul 27 2016 by vagrant
+Current configuration : 1264 bytes
 !
 version 15.4
 service timestamps debug datetime msec
@@ -12,7 +10,7 @@ no service password-encryption
 hostname router-three
 !
 boot-start-marker
-boot system flash c2900-universalk9_npe-mz.SPA.151-4.M1.bin
+boot system flash c2900-IMAGE-ONE.SPA.154-3.M3.bin
 boot-end-marker
 !
 !

@@ -1,6 +1,6 @@
 Building configuration...
 
-Current configuration : 1267 bytes
+Current configuration : 1262 bytes
 !
 version 15.4
 service timestamps debug datetime msec
@@ -10,7 +10,7 @@ no service password-encryption
 hostname router-one
 !
 boot-start-marker
-boot system flash c2900-universalk9-mz.SPA.154-3.M3.bin
+boot system flash c2900-IMAGE-ONE.SPA.154-3.M3.bin
 boot-end-marker
 !
 !

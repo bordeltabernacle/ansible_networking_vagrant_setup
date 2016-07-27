@@ -2,6 +2,7 @@
   gather_facts: no
   hosts: routers
   tasks:
+
     - ntc_save_config:
         platform: "{{ platform }}"
         username: "{{ ansible_user }}"
@@ -10,6 +11,7 @@
         local_file: pre-backups/{{ inventory_hostname }}-PRE.txt
       register: wr
     - debug: var=wr
+
     - ntc_file_copy:
         local_file: /home/vagrant/shared/images/{{ image_one }}
         platform: "{{ platform }}"
@@ -19,6 +21,7 @@
         file_system: "flash0:"
       register: scp
     - debug: var=scp
+
     - ntc_install_os:
         platform: "{{ platform }}"
         username: "{{ ansible_user }}"
@@ -27,6 +30,7 @@
         system_image_file: "{{ image_one }}"
       register: install
     - debug: var=install
+
     - ntc_save_config:
         platform: "{{ platform }}"
         username: "{{ ansible_user }}"
@@ -35,6 +39,7 @@
         local_file: post-backups/{{ inventory_hostname }}-POST.txt
       register: wr
     - debug: var=wr
+
     - ntc_reboot:
         platform: "{{ platform }}"
         username: "{{ ansible_user }}"
@@ -44,4 +49,3 @@
         timer: 1
       register: reboot
     - debug: var=reboot
-

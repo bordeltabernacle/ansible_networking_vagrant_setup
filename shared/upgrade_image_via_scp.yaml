@@ -13,7 +13,7 @@
     - debug: var=wr
 
     - ntc_file_copy:
-        local_file: /home/vagrant/shared/images/{{ image_one }}
+        local_file: /home/vagrant/shared/images/{{ image_two }}
         platform: "{{ platform }}"
         username: "{{ ansible_user }}"
         password: "{{ ansible_password }}"
@@ -27,7 +27,7 @@
         username: "{{ ansible_user }}"
         password: "{{ ansible_password }}"
         host: "{{ ansible_host }}"
-        system_image_file: "{{ image_one }}"
+        system_image_file: "{{ image_two }}"
       register: install
     - debug: var=install
 

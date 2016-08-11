@@ -1,0 +1,16 @@
+---
+- name: Get Device Information
+  gather_facts: no
+  hosts: routers
+  tasks:
+    - name: Send Show Commands
+      ios_command:
+        provider: "{{ provider }}"
+        commands:
+          - show inventory
+          - sh run | inc hostname
+          - sh ver | inc image
+          - sh ip int brief
+      register: info
+    - debug: var=info.stdout_lines
+

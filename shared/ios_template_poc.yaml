@@ -8,7 +8,7 @@
       ios_template:
         provider: "{{ cli }}"
         authorize: yes
-        backup: false
+        save_config: true
         src: ./candidates/{{ inventory_hostname }}.candidate.txt
       register: template
 

@@ -13,6 +13,7 @@
 
     - name: write output to file
       template:
-        src: output.conf.j2
-        dest: /home/vagrant/shared/output/{{ ansible_host }}.conf
+        src: output.txt.j2
+        dest: /home/vagrant/shared/show_files/{{ ansible_host }}.txt
+
 

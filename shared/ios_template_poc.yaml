@@ -1,0 +1,16 @@
+---
+- name: IOS Template Push Config
+  gather_facts: no
+  hosts: routers
+  tasks:
+
+    - name: Update Router Config
+      ios_template:
+        provider: "{{ cli }}"
+        authorize: yes
+        backup: false
+        src: ./candidates/{{ inventory_hostname }}.candidate.txt
+      register: template
+
+    - debug: var=template
+

@@ -1,7 +1,7 @@
 ---
 - name: Show Run To File
   gather_facts: no
-  hosts: test_routers
+  hosts: routers
   tasks:
 
     - name: execute show run command
@@ -13,6 +13,7 @@
 
     - name: write output to file
       template:
-        src: output.conf.j2
-        dest: /home/vagrant/shared/output/{{ ansible_host }}.conf
+        src: output.txt.j2
+        dest: ./show_files/{{ ansible_host }}.txt
+
 

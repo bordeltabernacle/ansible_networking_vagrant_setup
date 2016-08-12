@@ -6,9 +6,9 @@
 
     - name: Update Router Config
       ios_template:
-        provider: "{{ cli }}"
+        provider: "{{ provider }}"
         authorize: yes
-        save_config: true
+        backup: true
         src: ./candidates/{{ inventory_hostname }}.candidate.txt
       register: template
 

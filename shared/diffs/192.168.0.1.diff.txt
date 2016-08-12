@@ -1,0 +1,12 @@
++ip dhcp pool mypool
+ +network 1.0.0.0 255.0.0.0
+ +domain-name mydomain.com
+ +dns-server 1.1.1.10 1.1.1.11
+ +default-router 1.1.1.1
+ +lease 7
+interface GigabitEthernet0/0
+ -ip address 192.168.0.1 255.255.255.0
+-interface GigabitEthernet0/1
+ -ip address 10.10.10.21 255.255.255.0
+ -duplex auto
+ -speed auto

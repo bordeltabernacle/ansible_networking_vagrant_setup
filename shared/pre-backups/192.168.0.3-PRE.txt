@@ -1,12 +1,15 @@
+Building configuration...
+
+Current configuration : 1351 bytes
 !
-! Last configuration change at 11:19:02 UTC Fri Aug 12 2016 by vagrant
+! Last configuration change at 08:25:40 UTC Fri Aug 12 2016 by vagrant
 !
 version 15.4
 service timestamps debug datetime msec
 service timestamps log datetime msec
 no service password-encryption
 !
-hostname router-one
+hostname router-three
 !
 boot-start-marker
 boot system flash0:c2900-IMAGE-ONE.SPA.154-3.M3.bin
@@ -27,13 +30,6 @@ no aaa new-model
 !
 !
 !
-ip dhcp pool mypool
- network 1.0.0.0 255.0.0.0
- domain-name mydomain.com
- dns-server 1.1.1.10 1.1.1.11
- default-router 1.1.1.1
- lease 7
-!
 !
 !
 no ip domain lookup
@@ -46,10 +42,11 @@ multilink bundle-name authenticated
 cts logging verbose
 !
 !
-license udi pid CISCO2921/K9 sn FCZ1545706V
+license udi pid CISCO2921/K9 sn FCZ192560EG
 !
 !
-username vagrant privilege 15 secret 5 $1$lGlV$sF4MKyPYZlteNVgGHo9tL1
+file prompt quiet
+username vagrant privilege 15 secret 5 $1$MId/$HHwrBafHWHQKBSNUGvkt..
 !
 redundancy
 !
@@ -64,6 +61,12 @@ interface Embedded-Service-Engine0/0
  shutdown
 !
 interface GigabitEthernet0/0
+ ip address 192.168.0.3 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ ip address 10.10.10.13 255.255.255.0
  duplex auto
  speed auto
 !
@@ -101,5 +104,3 @@ line vty 0 4
 scheduler allocate 20000 1000
 !
 end
-
-router-one#

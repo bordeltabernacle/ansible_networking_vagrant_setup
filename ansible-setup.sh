@@ -23,6 +23,10 @@ sudo pip install ntc-ansible > /dev/null 2>&1
 git clone https://github.com/networktocode/ntc-ansible --recursive > /dev/null 2>&1
 sudo rm -r /home/vagrant/shared/library > /dev/null 2>&1
 sudo mv /home/vagrant/ntc-ansible/library /home/vagrant/shared/library > /dev/null 2>&1
+echo "Installing napalm-ansible module..."
+sudo pip install napalm-ios > /dev/null 2>&1
+git clone https://github.com/napalm-automation/napalm-ansible > /dev/null 2>&1
+sudo mv /home/vagrant/napalm-ansible/library/* /home/vagrant/shared/library/ > /dev/null 2>&1
 echo "+----------------------------------------------+"
 echo "| Ansible Cisco Playground Machine Provisioned |"
 echo "+----------------------------------------------+"

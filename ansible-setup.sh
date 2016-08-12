@@ -24,6 +24,7 @@ git clone https://github.com/networktocode/ntc-ansible --recursive > /dev/null 2
 sudo rm -r /home/vagrant/shared/library > /dev/null 2>&1
 sudo mv /home/vagrant/ntc-ansible/library /home/vagrant/shared/library > /dev/null 2>&1
 echo "Installing napalm-ansible module..."
+sudo apt-get install build-essential libssl-dev libffi-dev python-dev > /dev/null 2>&1
 sudo pip install napalm-ios > /dev/null 2>&1
 git clone https://github.com/napalm-automation/napalm-ansible > /dev/null 2>&1
 sudo mv /home/vagrant/napalm-ansible/library/* /home/vagrant/shared/library/ > /dev/null 2>&1

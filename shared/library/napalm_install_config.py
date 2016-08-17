@@ -125,8 +125,7 @@ msg:
 
 try:
     from napalm_base import get_network_driver
-except ImportError as e:
-    print "Error: %s" % e
+except ImportError:
     napalm_found = False
 else:
     napalm_found = True

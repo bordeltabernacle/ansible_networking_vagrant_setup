@@ -6,7 +6,7 @@
 
     - name: execute show run command
       ios_command:
-        provider: "{{ cli }}"
+        provider: "{{ provider }}"
         commands:
           - show run
       register: output
@@ -15,5 +15,3 @@
       template:
         src: output.txt.j2
         dest: ./show_files/{{ ansible_host }}.txt
-
-

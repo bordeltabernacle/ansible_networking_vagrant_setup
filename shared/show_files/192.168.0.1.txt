@@ -1,9 +1,10 @@
 Building configuration...
 
-Current configuration : 1388 bytes
+Current configuration : 1489 bytes
 !
-! No configuration change since last restart
-version 15.1
+! Last configuration change at 10:28:41 UTC Tue Sep 13 2016 by ********
+!
+version 15.4
 service timestamps debug datetime msec
 service timestamps log datetime msec
 no service password-encryption
@@ -11,7 +12,6 @@ no service password-encryption
 hostname router-one
 !
 boot-start-marker
-boot system flash c2900-IMAGE-TWO.SPA.151-4.M1.bin
 boot system flash0:c2900-IMAGE-ONE.SPA.154-3.M3.bin
 boot-end-marker
 !
@@ -19,20 +19,34 @@ boot-end-marker
 !
 no aaa new-model
 !
-no ipv6 cef
-ip source-route
-ip cef
 !
 !
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip dhcp pool mypool
+ network 1.0.0.0 255.0.0.0
+ domain-name mydomain.com
+ dns-server 1.1.1.10 1.1.1.11 
+ default-router 1.1.1.1 
+ lease 7
 !
 !
 !
 no ip domain lookup
 ip domain name ansible.dev
+ip cef
+no ipv6 cef
 multilink bundle-name authenticated
 !
 !
-crypto pki token default removal timeout 0
+cts logging verbose
 !
 !
 license udi pid CISCO2921/K9 sn FCZ1545706V
@@ -40,6 +54,8 @@ license udi pid CISCO2921/K9 sn FCZ1545706V
 !
 file prompt quiet
 username ******** privilege 15 secret 5 $1$lGlV$sF4MKyPYZlteNVgGHo9tL1
+!
+redundancy
 !
 !
 ip scp server enable
@@ -57,8 +73,7 @@ interface GigabitEthernet0/0
  speed auto
 !
 interface GigabitEthernet0/1
- no ip address
- shutdown
+ ip address 10.10.10.11 255.255.255.0
  duplex auto
  speed auto
 !
@@ -87,7 +102,6 @@ line 2
  no activation-character
  no exec
  transport preferred none
- transport input all
  transport output pad telnet rlogin lapb-ta mop udptn v120 ssh
  stopbits 1
 line vty 0 4
@@ -95,5 +109,6 @@ line vty 0 4
  transport input ssh
 !
 scheduler allocate 20000 1000
+!
 end
 

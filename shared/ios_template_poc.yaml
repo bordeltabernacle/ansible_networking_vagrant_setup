@@ -13,4 +13,3 @@
       register: template
 
     - debug: var=template
-

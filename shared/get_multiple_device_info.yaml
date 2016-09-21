@@ -25,7 +25,7 @@
     - name: Write Output to File
       template:
         src: serial_numbers.csv.j2
-        dest: ./output/serial_numbers.csv
+        dest: ./output/{{ inventory_hostname }}.csv
 
 
 - name: Get Switches Device Information
@@ -54,11 +54,11 @@
     - name: Write Output to File
       template:
         src: serial_numbers.csv.j2
-        dest: ./output/serial_numbers.csv
+        dest: ./output/{{ inventory_hostname }}.csv
 
 
-    - name: ASSEMBLE SHOW VERSION REPORTS
-      assemble:
-        src: './output/'
-        dest: './reports/serial_numbers.csv'
-      run_once: true
+    # - name: ASSEMBLE SHOW VERSION REPORTS
+    #   assemble:
+    #     src: './output/'
+    #     dest: './reports/serial_numbers.csv'
+    #   run_once: true

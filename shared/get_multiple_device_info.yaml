@@ -1,0 +1,64 @@
+---
+- name: Get Routers Device Information
+  gather_facts: no
+  hosts: routers
+  tasks:
+
+    - name: Send Show Commands
+      ios_command:
+        provider: "{{ provider }}"
+        commands:
+          - show run | inc hostname
+          - show inventory | inc Hw
+      register: info
+
+    - name: Set Hostname
+      set_fact:
+        hostname: "{{ info.stdout[0].split()[1] }}"
+
+    - name: Set Serial Number
+      set_fact:
+        serial_numbers: "{{ info.stdout[1].split()[7] }}"
+
+    - debug: msg="{{ hostname }} {{ serial_numbers }}"
+
+    - name: Write Output to File
+      template:
+        src: serial_numbers.csv.j2
+        dest: ./output/serial_numbers.csv
+
+
+- name: Get Switches Device Information
+  gather_facts: no
+  hosts: switches
+  tasks:
+
+    - name: Send Show Commands
+      ios_command:
+        provider: "{{ provider }}"
+        commands:
+          - show run | inc hostname
+          - show version | inc System serial number
+      register: info
+
+    - name: Set Hostname
+      set_fact:
+        hostname: "{{ info.stdout[0].split()[1] }}"
+
+    - name: Set Serial Number
+      set_fact:
+        serial_numbers: "{{ info.stdout[1].split()[4::5] | join('\n,') }}"
+
+    - debug: msg="{{ hostname }} {{ serial_numbers }}"
+
+    - name: Write Output to File
+      template:
+        src: serial_numbers.csv.j2
+        dest: ./output/serial_numbers.csv
+
+
+    - name: ASSEMBLE SHOW VERSION REPORTS
+      assemble:
+        src: './output/'
+        dest: './reports/serial_numbers.csv'
+      run_once: true

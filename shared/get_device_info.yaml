@@ -1,7 +1,7 @@
 ---
 - name: Get Device Information
   gather_facts: no
-  hosts: routers
+  hosts: all
   tasks:
     - name: Send Show Commands
       ios_command:
@@ -13,4 +13,3 @@
           - sh ip int brief
       register: info
     - debug: var=info.stdout_lines
-

@@ -1,0 +1,17 @@
+---
+- name: Show Run To File
+  gather_facts: no
+  hosts: routers
+  tasks:
+
+    - name: execute show run command
+      ios_command:
+        provider: "{{ provider }}"
+        commands:
+          - show run
+      register: output
+
+    - name: write output to file
+      template:
+        src: output.txt.j2
+        dest: ./show_files/{{ ansible_host }}.txt

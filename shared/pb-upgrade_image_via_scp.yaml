@@ -1,3 +1,4 @@
+---
 - name: upgrade image via scp
   gather_facts: no
   hosts: routers
@@ -8,7 +9,7 @@
         username: "{{ ansible_user }}"
         password: "{{ ansible_password }}"
         host: "{{ ansible_host }}"
-        local_file: pre-backups/{{ inventory_hostname }}-PRE.txt
+        local_file: pre-backups/{{ inventory_hostname }}-pre.txt
       register: wr
     - debug: var=wr
 

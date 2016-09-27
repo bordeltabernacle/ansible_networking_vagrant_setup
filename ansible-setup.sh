@@ -6,6 +6,8 @@ echo "| Provisioning Ansible Cisco Playground Machine |"
 echo "+-----------------------------------------------+"
 echo "Setting timezone..."
 sudo timedatectl set-timezone $TZ > /dev/null 2>&1
+echo "Creating non-shared tmp directory..."
+mkdir /home/vagrant/tmp > /dev/null 2>&1
 echo "Installing dependencies..."
 sudo apt-get install software-properties-common > /dev/null 2>&1
 echo "Adding Ansible repo..."

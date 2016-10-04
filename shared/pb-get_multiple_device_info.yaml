@@ -12,11 +12,11 @@
           - show inventory | inc Hw
       register: info
 
-    - name: Set Hostname
+    - name: Store Hostname
       set_fact:
         hostname: "{{ info.stdout[0].split()[1] }}"
 
-    - name: Set Serial Number
+    - name: Store Serial Number
       set_fact:
         serial_numbers: "{{ info.stdout[1].split()[7] }}"
 
@@ -41,11 +41,11 @@
           - show version | inc System serial number
       register: info
 
-    - name: Set Hostname
+    - name: Store Hostname
       set_fact:
         hostname: "{{ info.stdout[0].split()[1] }}"
 
-    - name: Set Serial Number
+    - name: Store Serial Number
       set_fact:
         serial_numbers: "{{ info.stdout[1].split()[4::5] | join('\n,') }}"
 
@@ -58,7 +58,7 @@
 
 
 - name: Prepare Serial Number Report
-  hosts: localhost
+  hosts: 127.0.0.1
   connection: local
   tasks:
 
@@ -68,5 +68,5 @@
         dest: '../tmp/serial_numbers.csv'
       run_once: true
 
-    - name: Move Report into Shared Reports Directory
-      command: mv /home/vagrant/tmp/serial_numbers.csv /home/vagrant/shared/reports
+    - name: Copy Report into Shared Reports Directory
+      command: cp /home/vagrant/tmp/serial_numbers.csv /home/vagrant/shared/reports

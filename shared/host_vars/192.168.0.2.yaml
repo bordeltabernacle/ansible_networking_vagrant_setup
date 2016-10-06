@@ -1,0 +1,5 @@
+---
+hostname: router-2921-02
+serial_number: FCZ1545706V
+gig_0_ip: "{{ ansible_host }}"
+gig_1_ip: 10.10.0.2

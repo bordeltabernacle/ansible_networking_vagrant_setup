@@ -1,0 +1,49 @@
+---
+- name: Configure Replace Configurations
+  gather_facts: no
+  hosts: routers
+
+  tasks:
+
+    - name: Generate Configuration Files
+      template:
+        src: changes-OFF.cfg.j2
+        dest: ../tmp/{{ ansible_host }}.cfg
+
+    - name: Move Configs into Configs Directory
+      command: mv /home/vagrant/tmp/{{ ansible_host }}.cfg /home/vagrant/shared/configs
+
+    - name: Save Pre-Changes Config
+      ntc_save_config:
+        platform: "{{ platform }}"
+        username: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        host: "{{ ansible_host }}"
+        local_file: pre-backups/{{ ansible_host }}-PRE.txt
+
+    - name: Secure Copy Configs to Devices
+      ntc_file_copy:
+        local_file: configs/{{ ansible_host }}.cfg
+        platform: "{{ platform }}"
+        username: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        host: "{{ ansible_host }}"
+        file_system: "flash0:"
+
+    - name: Execute Configure Replace
+      ios_command:
+        commands: configure replace flash0:/{{ ansible_host }}.cfg force
+        provider: "{{ provider }}"
+      register: config_replace
+
+    - name: Debug Configure Replace Command
+      debug: var=config_replace.stdout_lines
+
+    - name: Save Post-Changes Config
+      ntc_save_config:
+        platform: "{{ platform }}"
+        username: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        host: "{{ ansible_host }}"
+        local_file: post-backups/{{ ansible_host }}-POST.txt
+

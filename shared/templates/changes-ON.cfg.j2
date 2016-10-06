@@ -1,13 +1,8 @@
-Building configuration...
-
-Current configuration : 1280 bytes
-!
 version 15.4
 service timestamps debug datetime msec
 service timestamps log datetime msec
 no service password-encryption
 !
-hostname router-2921-01
 !
 boot-start-marker
 boot system flash0:c2900-IMAGE-ONE.SPA.154-3.M3.bin
@@ -19,12 +14,14 @@ no aaa new-model
 !
 !
 !
+hostname {{ hostname }}
 !
 !
 !
 !
 !
 !
+license udi pid CISCO2921/K9 sn {{ serial_number }}
 !
 !
 !
@@ -40,7 +37,6 @@ multilink bundle-name authenticated
 cts logging verbose
 !
 !
-license udi pid CISCO2921/K9 sn FCZ192570GZ
 !
 !
 file prompt quiet
@@ -59,25 +55,23 @@ interface Embedded-Service-Engine0/0
  shutdown
 !
 interface GigabitEthernet0/0
- ip address 192.168.0.1 255.255.255.0
+ ip address {{ gig_0_ip }} 255.255.255.0
  duplex auto
  speed auto
 !
 interface GigabitEthernet0/1
- ip address 10.10.10.12 255.255.255.0
+ ip address {{ gig_1_ip }} 255.255.255.0
  duplex auto
  speed auto
 !
 interface GigabitEthernet0/2
  no ip address
- shutdown
- duplex auto
  speed auto
 !
 ip forward-protocol nd
 !
-no ip http server
-no ip http secure-server
+ip http server
+ip http secure-server
 !
 !
 !
@@ -102,3 +96,4 @@ line vty 0 4
 scheduler allocate 20000 1000
 !
 end
+

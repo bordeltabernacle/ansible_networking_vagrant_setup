@@ -1,15 +1,15 @@
 Building configuration...
 
-Current configuration : 1351 bytes
+Current configuration : 1329 bytes
 !
-! Last configuration change at 08:25:40 UTC Fri Aug 12 2016 by vagrant
+! Last configuration change at 14:15:30 UTC Thu Oct 6 2016 by vagrant
 !
 version 15.4
 service timestamps debug datetime msec
 service timestamps log datetime msec
 no service password-encryption
 !
-hostname router-three
+hostname router-2921-01
 !
 boot-start-marker
 boot system flash0:c2900-IMAGE-ONE.SPA.154-3.M3.bin
@@ -42,11 +42,11 @@ multilink bundle-name authenticated
 cts logging verbose
 !
 !
-license udi pid CISCO2921/K9 sn FCZ192560EG
+license udi pid CISCO2921/K9 sn FCZ192570GZ
 !
 !
 file prompt quiet
-username vagrant privilege 15 secret 5 $1$MId/$HHwrBafHWHQKBSNUGvkt..
+username vagrant privilege 15 secret 5 $1$nk0y$K321d7Fx0.Vtni7.1HuDY0
 !
 redundancy
 !
@@ -61,18 +61,18 @@ interface Embedded-Service-Engine0/0
  shutdown
 !
 interface GigabitEthernet0/0
- ip address 192.168.0.3 255.255.255.0
+ ip address 192.168.0.1 255.255.255.0
  duplex auto
  speed auto
 !
 interface GigabitEthernet0/1
- ip address 10.10.10.13 255.255.255.0
+ no ip address
+ shutdown
  duplex auto
  speed auto
 !
 interface GigabitEthernet0/2
  no ip address
- shutdown
  duplex auto
  speed auto
 !

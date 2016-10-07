@@ -1,6 +1,8 @@
 #!/bin/bash
 LOCALE=en_GB.UTF-8
 TIMEZONE=Europe/London
+GITHUB_USER=bordeltabernacle
+PLAYBOOKS_DIR=ansible_network_automation_poc
 
 echo "+-------------------------------------------------+"
 echo "| Provisioning Ansible Networking Vagrant Machine |"
@@ -42,9 +44,9 @@ echo "Installing Napalm Ansible Module..."
 git clone https://github.com/napalm-automation/napalm-ansible > /dev/null 2>&1
 sudo mv /home/vagrant/napalm-ansible/library/* /home/vagrant/library/ > /dev/null 2>&1
 
-echo "Cloning & Symlinking Ansible Network Automation PoC..."
-git clone https://github.com/bordeltabernacle/ansible_network_automation_poc.git /home/vagrant/shared/ > /dev/null 2>&1
-ln -snf /home/vagrant/library /home/vagrant/ansible_network_automation_poc/library > /dev/null 2>&1
+echo "Cloning & Symlinking $GITHUB_USER/$PLAYBOOKS_DIR..."
+git clone https://github.com/$GITHUB_USER/$PLAYBOOKS_DIR.git /home/vagrant/shared/src
+ln -snf /home/vagrant/library /home/vagrant/shared/src/library
 
 echo "+------------------------------------------------+"
 echo "| Ansible Networking Vagrant Machine Provisioned |"

@@ -45,8 +45,8 @@ git clone https://github.com/napalm-automation/napalm-ansible > /dev/null 2>&1
 sudo mv /home/vagrant/napalm-ansible/library/* /home/vagrant/library/ > /dev/null 2>&1
 
 echo "Cloning & Symlinking $GITHUB_USER/$PLAYBOOKS_DIR..."
-git clone https://github.com/$GITHUB_USER/$PLAYBOOKS_DIR.git /home/vagrant/shared/src
-ln -snf /home/vagrant/library /home/vagrant/shared/src/library
+git clone https://github.com/$GITHUB_USER/$PLAYBOOKS_DIR.git /home/vagrant/shared/src > /dev/null 2>&1
+ln -snf /home/vagrant/library /home/vagrant/shared/src/library > /dev/null 2>&1
 
 echo "+------------------------------------------------+"
 echo "| Ansible Networking Vagrant Machine Provisioned |"

@@ -23,7 +23,7 @@ I've only used this with Cisco devices, btw.
 The `provision.sh` script clones [my own repo](https://github.com/bordeltabernacle/ansible_network_automation_poc)
 of Ansible playbooks, and then adds a symlink to the library of third party
 modules. If you want to clone a different repo of Ansible playbooks, you can
-just change the following variables in the provision script:
+change the following variables in the provision script:
 
 ```bash
 GITHUB_USER=bordeltabernacle

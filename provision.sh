@@ -1,26 +1,27 @@
 #!/bin/bash
-TIMEZONE=Europe/London
 LOCALE=en_GB.UTF-8
+TIMEZONE=Europe/London
 
 echo "+-------------------------------------------------+"
 echo "| Provisioning Ansible Networking Vagrant Machine |"
 echo "+-------------------------------------------------+"
 
-echo "Setting timezone..."
+echo "Setting locale & timezone..."
 sudo locale-gen $LOCALE > /dev/null 2>&1
+echo export LC_ALL=$LOCALE >> /home/vagrant/.profile
 echo export TZ=$TIMEZONE >> /home/vagrant/.profile
 
 echo "Creating non-shared tmp directory..."
 mkdir /home/vagrant/tmp > /dev/null 2>&1
-
-echo "Installing dependencies..."
-sudo apt-get -y install software-properties-common zlib1g-dev libxml2-dev libxslt-dev build-essential libssl-dev libffi-dev python-dev > /dev/null 2>&1
 
 echo "Adding Ansible repo..."
 sudo apt-add-repository ppa:ansible/ansible > /dev/null 2>&1
 
 echo "Updating apt-get..."
 sudo apt-get -y update > /dev/null 2>&1
+
+echo "Installing dependencies..."
+sudo apt-get -y install software-properties-common zlib1g-dev libxml2-dev libxslt-dev build-essential libssl-dev libffi-dev python-dev > /dev/null 2>&1
 
 echo "Installing Git..."
 sudo apt-get -y install git > /dev/null 2>&1

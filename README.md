@@ -8,15 +8,13 @@ It is primarily for those network engineers who work in an enterprise
 environment and have a Windows laptop. It provides a linux VM with Ansible
 installed, as well as the following third party networking modules:
 
-- [ntc-ansible](https://github.com/networktocode/ntc-ansible) from Jason
-    Edelmans' @networktocode
-- [napalm-ansible](https://github.com/napalm-automation/napalm-ansible) from
-    @napalm-automation
+- [ntc-ansible](https://github.com/networktocode/ntc-ansible)
+- [napalm-ansible](https://github.com/napalm-automation/napalm-ansible)
 
 A shared folder is created within the Vagrant VM so you can edit playbooks on
 your host and have them accessible by Ansible within the VM.
 
-Current Ansible version: 2.1.2.0
+**Current Ansible version: 2.1.2.0**
 
 I've only used this with Cisco devices, btw.
 
@@ -25,7 +23,7 @@ I've only used this with Cisco devices, btw.
 I haven't included any of the files Ansible uses, such as playbooks, templates,
 inventory etc. I felt a barebones environment would be best. If you want
 you can clone/download my public repo of playbooks and associated files from
-[here](TODO: add link). Copy the files & direcotries into the shared folder,
+[here](TODO: add link). Copy the files & directories into the shared folder,
 which you can do on either the host or the guest, update the `hosts` file and
 files in the `group_vars` and `host_vars` directories and you should be good to
 go.

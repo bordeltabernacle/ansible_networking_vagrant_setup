@@ -18,15 +18,25 @@ your host and have them accessible by Ansible within the VM.
 
 I've only used this with Cisco devices, btw.
 
-## Ansible Files
+## Included Playbooks
 
-I haven't included any of the files Ansible uses, such as playbooks, templates,
-inventory etc. I felt a barebones environment would be best. If you want
-you can clone/download my public repo of playbooks and associated files from
-[here](TODO: add link). Copy the files & directories into the shared folder,
-which you can do on either the host or the guest, update the `hosts` file and
-files in the `group_vars` and `host_vars` directories and you should be good to
-go.
+The `provision.sh` script clones [my own repo](https://github.com/bordeltabernacle/ansible_network_automation_poc)
+of Ansible playbooks, and then adds a symlink to the library of third party
+modules. If you want to clone a different repo of Ansible playbooks, you can
+just change the following variables in the provision script:
+
+```bash
+GITHUB_USER=bordeltabernacle
+PLAYBOOKS_DIR=ansible_network_automation_poc
+```
+
+Otherwise you can comment out the following lines of the script and start form scratch.
+
+```bash
+echo "Cloning & Symlinking $GITHUB_USER/$PLAYBOOKS_DIR..."
+git clone https://github.com/$GITHUB_USER/$PLAYBOOKS_DIR.git /home/vagrant/shared/src > /dev/null 2>&1
+ln -snf /home/vagrant/library /home/vagrant/shared/src/library > /dev/null 2>&1
+```
 
 ## Debug Vagrantfile
 

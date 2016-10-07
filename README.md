@@ -28,6 +28,18 @@ which you can do on either the host or the guest, update the `hosts` file and
 files in the `group_vars` and `host_vars` directories and you should be good to
 go.
 
+## Debug Vagrantfile
+
+The stdout and stderr from all the provision script commands are piped into
+`/dev/null` for a quieter install. If you're having problems and you don't know
+why, delete the ` > /dev/null 2>&1` from the `Vagrantfile` and you'll
+get output from Vagrant in your terminal.
+
+## Timezone
+
+The timezone is set to `Europe/London` but can be changed within the
+`Vagrantfile`
+
 ## Getting Started
 
 I've written a blog post that may be helpful; [Using Vagrant to set up an Ansible Environment](http://bordeltabernacle.netlify.com/post/2016/08/using-vagrant-set-up-ansible-environment/)

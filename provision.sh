@@ -7,7 +7,7 @@ echo "| Provisioning Ansible Networking Vagrant Machine |"
 echo "+-------------------------------------------------+"
 
 echo "Setting timezone..."
-sudo locale-gen $LOCALE
+sudo locale-gen $LOCALE > /dev/null 2>&1
 echo export TZ=$TIMEZONE >> /home/vagrant/.profile
 
 echo "Creating non-shared tmp directory..."
@@ -30,12 +30,11 @@ sudo apt-get -y install ansible > /dev/null 2>&1
 
 echo "Installing pip & requirements"
 sudo apt-get -y install python-pip > /dev/null 2>&1
-sudo pip install -r /home/vagrant/shared/requirements.txt > /dev/null 2>&1
+sudo pip install -r /home/vagrant/requirements.txt > /dev/null 2>&1
 
 echo "Installing ntc-ansible module..."
 git clone https://github.com/networktocode/ntc-ansible --recursive > /dev/null 2>&1
-sudo rm -r /home/vagrant/shared/library > /dev/null 2>&1
-sudo mv /home/vagrant/ntc-ansible/library /home/vagrant/shared/library > /dev/null 2>&1
+sudo mv /home/vagrant/ntc-ansible/library/* /home/vagrant/shared/library/ > /dev/null 2>&1
 
 echo "Installing napalm-ansible module..."
 git clone https://github.com/napalm-automation/napalm-ansible > /dev/null 2>&1

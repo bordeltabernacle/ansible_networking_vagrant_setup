@@ -1,8 +1,0 @@
----
-- name: Update Hostname
-  gather_facts: no
-  hosts: routers
-  tasks:
-    - ios_config:
-        provider: "{{ cli }}"
-        lines: ['hostname {{ inventory_hostname }}']

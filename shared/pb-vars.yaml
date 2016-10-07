@@ -1,6 +1,0 @@
----
-- name: show available vars
-  gather_facts: no
-  hosts: routers
-  tasks:
-    - debug: var=hostvars[inventory_hostname] verbosity=1

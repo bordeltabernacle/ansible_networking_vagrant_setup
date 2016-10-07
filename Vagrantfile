@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 vagrant_root = File.dirname(__FILE__)
-project_name = "acp"
+project_name = "anvs"
 
 Vagrant.configure(2) do |config|
     config.vm.box = "ubuntu/trusty64"
@@ -16,6 +16,6 @@ Vagrant.configure(2) do |config|
     config.vm.define "#{project_name}" do |machine|
         machine.vm.hostname = "#{project_name}"
         machine.vm.synced_folder "#{vagrant_root}/shared", "/home/vagrant/shared"
-        machine.vm.provision :shell, :path => "#{vagrant_root}/ansible-setup.sh"
+        machine.vm.provision :shell, :path => "#{vagrant_root}/provision.sh"
     end
 end

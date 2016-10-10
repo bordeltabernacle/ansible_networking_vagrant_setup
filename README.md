@@ -21,8 +21,26 @@ I've only used this with Cisco devices, btw.
 ## Included Playbooks
 
 The `provision.sh` script clones [my own repo](https://github.com/bordeltabernacle/ansible_network_automation_poc)
-of Ansible playbooks, and then adds a symlink to the library of third party
-modules. If you want to clone a different repo of Ansible playbooks, you can
+of Ansible playbooks. It also then `pip install` the `requirements.txt` file
+within this repo.
+
+### Third-Party Modules
+
+The `ntc-ansible` & `napalm-ansible` modules are referenced in the
+`ansible.cfg` configuration file within this repo.
+
+```ini
+[defaults]
+inventory = ./hosts
+library =   ../ntc-ansible/library:../napalm-ansible/library
+```
+
+If you install any other third party modules, either have them in the
+`src/library`, or add the path to the colon-separated list in `ansible.cfg`.
+
+### Cloning a Different Playbooks Repo
+
+If you want to clone a different repo of Ansible playbooks, you can
 change the following variables in the provision script:
 
 ```bash
@@ -30,12 +48,18 @@ GITHUB_USER=bordeltabernacle
 PLAYBOOKS_DIR=ansible_network_automation_poc
 ```
 
-Otherwise you can comment out the following lines of the script and start form scratch.
+The provision script will rename the repo as `src`, and `pip install` any
+requirements.txt files in the repo. To access the installed third party
+libraries be sure to update your `ansible.cfg` file as above. Otherwise you can
+comment out the following lines of the script and start form scratch.
 
 ```bash
-echo "Cloning & Symlinking $GITHUB_USER/$PLAYBOOKS_DIR..."
-git clone https://github.com/$GITHUB_USER/$PLAYBOOKS_DIR.git /home/vagrant/shared/src > /dev/null 2>&1
-ln -snf /home/vagrant/library /home/vagrant/shared/src/library > /dev/null 2>&1
+echo "Cloning $GITHUB_USER/$PLAYBOOKS_DIR..."
+sudo rm -r $VAGRANT_HOME/shared/src > /dev/null 2>&1
+git clone https://github.com/$GITHUB_USER/$PLAYBOOKS_DIR.git $VAGRANT_HOME/shared/src > /dev/null 2>&1
+
+echo "Installing $GITHUB_USER/$PLAYBOOKS_DIR requirements..."
+sudo -H pip install -r $VAGRANT_HOME/shared/src/requirements.txt > /dev/null 2>&1
 ```
 
 ## Debug Vagrantfile

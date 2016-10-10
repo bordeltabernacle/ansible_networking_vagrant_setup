@@ -55,5 +55,5 @@ sudo -H pip install -r $VAGRANT_HOME/shared/src/requirements.txt > /dev/null 2>&
 echo "+------------------------------------------------+"
 echo "| Ansible Networking Vagrant Machine Provisioned |"
 echo "+------------------------------------------------+"
-echo "|                 Go build stuff!                |"
+echo "|                Go build stuff!                 |"
 echo "+------------------------------------------------+"

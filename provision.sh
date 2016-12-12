@@ -32,12 +32,12 @@ echo "Installing Pip"
 sudo apt-get -y install python-pip
 sudo -H pip install -U pip
 
-echo "Cloning $GITHUB_USER/$PLAYBOOKS_DIR..."
-sudo rm -r $VAGRANT_HOME/shared/src
-git clone https://github.com/$GITHUB_USER/$PLAYBOOKS_DIR.git $VAGRANT_HOME/shared/src
+# echo "Cloning $GITHUB_USER/$PLAYBOOKS_DIR..."
+# sudo rm -r $VAGRANT_HOME/shared/src
+# git clone https://github.com/$GITHUB_USER/$PLAYBOOKS_DIR.git $VAGRANT_HOME/shared/src
 
-echo "Installing $GITHUB_USER/$PLAYBOOKS_DIR requirements..."
-sudo -H pip install -r $VAGRANT_HOME/shared/src/requirements.txt
+# echo "Installing $GITHUB_USER/$PLAYBOOKS_DIR requirements..."
+# sudo -H pip install -r $VAGRANT_HOME/shared/src/requirements.txt
 
 echo "+------------------------------------------------+"
 echo "| Ansible Networking Vagrant Machine Provisioned |"

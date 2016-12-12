@@ -5,8 +5,8 @@ vagrant_root = File.dirname(__FILE__)
 project_name = "anvs"
 
 Vagrant.configure(2) do |config|
-    config.vm.box = "ubuntu/trusty64"
-    config.vm.box_url = "https://atlas.hashicorp.com/ubuntu/boxes/trusty64"
+    config.vm.box = "bento/ubuntu-16.04"
+    config.vm.box_url = "https://atlas.hashicorp.com/bento/boxes/ubuntu-16.04"
     config.vm.provider "virtualbox" do |vb|
         vb.memory = "1028"
         vb.cpus = "1"

@@ -29,11 +29,8 @@ sudo apt -y update
 echo "+----------------------------+"
 echo "| Installing dependencies... |"
 echo "+----------------------------+"
-sudo apt-get -y install libxml2-dev \
-                        zlib1g-dev \
-                        libxml2-dev \
-                        libxslt-dev \
-                        build-essential \
+# https://stackoverflow.com/questions/22073516/failed-to-install-python-cryptography-package-with-pip-and-setup-py#22210069
+sudo apt-get -y install build-essential \
                         libssl-dev \
                         libffi-dev \
                         python-dev

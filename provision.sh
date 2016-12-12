@@ -1,11 +1,8 @@
 #!/bin/bash
-# User Variables
+
 LOCALE=en_GB.UTF-8
 TIMEZONE=Europe/London
 VAGRANT_HOME=/home/vagrant
-USER_PLAYBOOK=true
-GITHUB_USER=bordeltabernacle
-PLAYBOOKS_DIR=ansible_network_automation_poc
 
 
 echo "+-------------------------------------------------+"
@@ -51,25 +48,6 @@ echo "+--------------------------------+"
 echo "| Installing requirements.txt... |"
 echo "+--------------------------------+"
 sudo -H pip install -r $VAGRANT_HOME/shared/requirements.txt
-
-if [ "$USER_PLAYBOOK" = true ] ; then
-    echo "+----------------------------------------+"
-    echo "| Cloning $GITHUB_USER/$PLAYBOOKS_DIR... |"
-    echo "+----------------------------------------+"
-    cd $VAGRANT_HOME/shared
-    git clone https://github.com/$GITHUB_USER/$PLAYBOOKS_DIR.git
-fi
-
-if [ -f "$VAGRANT_HOME/shared/$PLAYBOOKS_DIR/requirements.txt" ] ; then
-    echo "+-----------------------------------------------+"
-	echo "| Installing playbooks pip requirements file... |"
-    echo "+-----------------------------------------------+"
-    sudo -H pip install -r $VAGRANT_HOME/shared/$PLAYBOOKS_DIR/requirements.txt
-else
-    echo "+-------------------------------------------------------------+"
-	echo "| No $GITHUB_USER/$PLAYBOOKS_DIR pip requirements file found. |"
-    echo "+-------------------------------------------------------------+"
-fi
 
 echo "+------------------------------------------------+"
 echo "| Ansible Networking Vagrant Machine Provisioned |"

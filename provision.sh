@@ -37,14 +37,6 @@ sudo apt-get -y install ansible > /dev/null 2>&1
 echo "Installing Pip"
 sudo apt-get -y install python-pip > /dev/null 2>&1
 
-echo "Installing NTC Ansible Module..."
-sudo rm -r $VAGRANT_HOME/shared/ntc-ansible > /dev/null 2>&1
-git clone https://github.com/networktocode/ntc-ansible --recursive $VAGRANT_HOME/shared/ntc-ansible > /dev/null 2>&1
-
-echo "Installing Napalm Ansible Module..."
-sudo rm -r $VAGRANT_HOME/shared/napalm-ansible > /dev/null 2>&1
-git clone https://github.com/napalm-automation/napalm-ansible $VAGRANT_HOME/shared/napalm-ansible > /dev/null 2>&1
-
 echo "Cloning $GITHUB_USER/$PLAYBOOKS_DIR..."
 sudo rm -r $VAGRANT_HOME/shared/src > /dev/null 2>&1
 git clone https://github.com/$GITHUB_USER/$PLAYBOOKS_DIR.git $VAGRANT_HOME/shared/src > /dev/null 2>&1

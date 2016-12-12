@@ -1,73 +1,18 @@
 # Ansible Networking Vagrant Setup
 
-This is an Ubuntu 14.04 based Vagrant machine for working with Ansible's
-networking modules. It's not 16.04 as there are some issues with the 16.04
-Vagrant image.
+This is an Ubuntu 16.04 based Vagrant machine for working with Ansible's
+networking modules. It uses the [bento Ubuntu box](https://atlas.hashicorp.com/bento/boxes/ubuntu-16.04) rather than the official Ubuntu box, for [this reason](https://github.com/mitchellh/vagrant/issues/7155#issuecomment-228568200).
 
 It is primarily for those network engineers who work in an enterprise
-environment and have a Windows laptop. It provides a linux VM with Ansible
-installed, as well as the following third party networking modules:
-
-- [ntc-ansible](https://github.com/networktocode/ntc-ansible)
-- [napalm-ansible](https://github.com/napalm-automation/napalm-ansible)
+environment and have a Windows laptop. It provides an easy to set up and use
+linux VM with Ansible installed.
 
 A shared folder is created within the Vagrant VM so you can edit playbooks on
 your host and have them accessible by Ansible within the VM.
 
-**Current Ansible version: 2.1.2.0**
+**Current Ansible version: 2.2**
 
 I've only used this with Cisco devices, btw.
-
-## Included Playbooks
-
-The `provision.sh` script clones [my own repo](https://github.com/bordeltabernacle/ansible_network_automation_poc)
-of Ansible playbooks. It also then `pip install` the `requirements.txt` file
-within this repo.
-
-### Third-Party Modules
-
-The `ntc-ansible` & `napalm-ansible` modules are referenced in the
-`ansible.cfg` configuration file within this repo.
-
-```ini
-[defaults]
-inventory = ./hosts
-library =   ../ntc-ansible/library:../napalm-ansible/library
-```
-
-If you install any other third party modules, either have them in the
-`src/library`, or add the path to the colon-separated list in `ansible.cfg`.
-
-### Cloning a Different Playbooks Repo
-
-If you want to clone a different repo of Ansible playbooks, you can
-change the following variables in the provision script:
-
-```bash
-GITHUB_USER=bordeltabernacle
-PLAYBOOKS_DIR=ansible_network_automation_poc
-```
-
-The provision script will rename the repo as `src`, and `pip install` any
-requirements.txt files in the repo. To access the installed third party
-libraries be sure to update your `ansible.cfg` file as above. Otherwise you can
-comment out the following lines of the script and start form scratch.
-
-```bash
-echo "Cloning $GITHUB_USER/$PLAYBOOKS_DIR..."
-sudo rm -r $VAGRANT_HOME/shared/src > /dev/null 2>&1
-git clone https://github.com/$GITHUB_USER/$PLAYBOOKS_DIR.git $VAGRANT_HOME/shared/src > /dev/null 2>&1
-
-echo "Installing $GITHUB_USER/$PLAYBOOKS_DIR requirements..."
-sudo -H pip install -r $VAGRANT_HOME/shared/src/requirements.txt > /dev/null 2>&1
-```
-
-## Debug Vagrantfile
-
-The stdout and stderr from all the provision script commands are piped into
-`/dev/null` for a quieter install. If you're having problems and you don't know
-why, delete the ` > /dev/null 2>&1` from the `Vagrantfile` and you'll
-get output from Vagrant in your terminal.
 
 ## Timezone
 
@@ -121,7 +66,8 @@ line vty 0 4
 crypto key generate rsa
 ```
 
-Also, `file prompt quiet` suppresses confirmation alerts during file operations.
+Also, `file prompt quiet` can be useful, as it suppresses confirmation alerts
+during file operations.
 
 ## Known Issues
 

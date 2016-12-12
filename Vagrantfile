@@ -5,6 +5,7 @@ vagrant_root = File.dirname(__FILE__)
 project_name = "anvs"
 
 Vagrant.configure(2) do |config|
+    # Don't use the official Ubuntu box: https://github.com/mitchellh/vagrant/issues/7155#issuecomment-228568200
     config.vm.box = "bento/ubuntu-16.04"
     config.vm.box_url = "https://atlas.hashicorp.com/bento/boxes/ubuntu-16.04"
     config.vm.provider "virtualbox" do |vb|

@@ -12,21 +12,21 @@ echo "+-------------------------------------------------+"
 echo "| Provisioning Ansible Networking Vagrant Machine |"
 echo "+-------------------------------------------------+"
 
-echo "+-------------------------------+"
-echo "| Setting locale & timezone..." |
-echo "+-------------------------------+"
+echo "+------------------------------+"
+echo "| Setting locale & timezone... |"
+echo "+------------------------------+"
 sudo locale-gen $LOCALE
 echo export LC_ALL=$LOCALE >> $VAGRANT_HOME/.profile
 echo export TZ=$TIMEZONE >> $VAGRANT_HOME/.profile
 
-echo "+----------------------------+"
-echo "| Creating tmp directory..." |
-echo "+----------------------------+"
+echo "+---------------------------+"
+echo "| Creating tmp directory... |"
+echo "+---------------------------+"
 mkdir $VAGRANT_HOME/tmp
 
-echo "+------------------+"
-echo "| Updating apt..." |
-echo "+------------------+"
+echo "+-----------------+"
+echo "| Updating apt... |"
+echo "+-----------------+"
 sudo apt -y update
 
 echo "+----------------------------+"
@@ -41,21 +41,21 @@ sudo apt-get -y install libxml2-dev \
                         libffi-dev \
                         python-dev
 
-echo "+---------------------------+"
-echo "| Installing python-pip..." |
-echo "+---------------------------+"
+echo "+--------------------------+"
+echo "| Installing python-pip... |"
+echo "+--------------------------+"
 sudo apt-get -y install python-pip
 sudo -H pip install -U pip
 
-echo "+---------------------------------+"
-echo "| Installing requirements.txt..." |
-echo "+---------------------------------+"
+echo "+--------------------------------+"
+echo "| Installing requirements.txt... |"
+echo "+--------------------------------+"
 sudo -H pip install -r $VAGRANT_HOME/shared/requirements.txt
 
 if [ "$USER_PLAYBOOK" = true ] ; then
-    echo "+-----------------------------------------+"
-    echo "| Cloning $GITHUB_USER/$PLAYBOOKS_DIR..." |
-    echo "+-----------------------------------------+"
+    echo "+----------------------------------------+"
+    echo "| Cloning $GITHUB_USER/$PLAYBOOKS_DIR... |"
+    echo "+----------------------------------------+"
     cd $VAGRANT_HOME/shared
     git clone https://github.com/$GITHUB_USER/$PLAYBOOKS_DIR.git
 fi

@@ -89,14 +89,19 @@ This will reboot the device in 15 minutes, unless the `reload cancel` command is
 To use the `ntc-ansible` modules, they must be in the ansible library path. They are initially downloaded the the Vagrant user's home directory. There are a few options here:
 
 1. Move the library directory into the root of the playbooks directory:
+
     ```
     mv /home/vagrant/ntc-ansible/library /home/vagrant/shared/playbooks_dir
     ```
+
 2. Set up a symlink to the ntc-ansible library:
+
     ```
     ln -sn /home/vagrant/ntc-ansible/library /home/vagrant/shared/playbooks_dir/library
     ```
+
 3. Add a line to the `ansible.cfg` file pointing to the ntc-ansible library:
+
     ```
     [defaults]
     library = ../../ntc-ansible/library
@@ -119,7 +124,7 @@ sudo -H pip install paramiko==1.17
 
 ### Vagrant Shared Folders
 
-Ansible is not always able to save temporary files in Vagrant shared folders.
+Ansible is not always able to save temporary files in Vagrant shared folders. Issue [#4386](https://github.com/ansible/ansible-modules-core/issues/4386).
 This disrupts many attributes of Ansible such as creating backup configuration
 files. To get around this a `tmp` directory is created in the home directory and
 files can be saved here and moved into the shared directory.
@@ -136,8 +141,6 @@ within the shared folder, we can do this...
     - name: Move Config into Configs Directory
       command: mv /home/vagrant/tmp/{{ ansible_host }}.cfg /home/vagrant/shared/configs
 ```
-
-[#4386](https://github.com/ansible/ansible-modules-core/issues/4386)
 
 ## Contributing
 

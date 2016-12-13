@@ -10,7 +10,7 @@ linux VM with Ansible installed.
 A shared folder is created within the Vagrant VM so you can edit playbooks on
 your host and have them accessible by Ansible within the VM.
 
-**Current Ansible version: 2.2**
+**Current Ansible version: 2.2.0.0**
 
 I've only used this with Cisco devices, btw.
 
@@ -73,8 +73,14 @@ during file operations.
 
 ### Paramiko
 
-Paramiko is pinned to a 1.x release as a backward incompatible change was
-introduced with the release of version 2. [#15665](https://github.com/ansible/ansible/issues/15665)
+Paramiko is pinned to a 2.0.2 release due to [this issue](https://github.com/paramiko/paramiko/issues/859)
+
+Paramiko was previously pinned to a 1.17 release as a backward incompatible change was
+introduced with the release of version 2, issue [#15665](https://github.com/ansible/ansible/issues/15665). If you are having issues, then do try downgrading your paramiko version:
+
+```
+sudo -H pip install paramiko==1.17
+```
 
 ### Vagrant Shared Folders
 

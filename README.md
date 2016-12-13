@@ -69,6 +69,39 @@ crypto key generate rsa
 Also, `file prompt quiet` can be useful, as it suppresses confirmation alerts
 during file operations.
 
+## Third Party Libraries
+
+This setup also includes Jason Edelman's `ntc-ansible` [module](https://github.com/networktocode/ntc-ansible). This is primarily to be able to use Cisco's `reboot in ` command. As this command prompts for confirmation, currently the ansible networking modules time out as they are not able to provide the required confirmation. Instead we can use the `ntc_reboot` module, like so:
+
+```yaml
+- name: Reload in 15 minutes
+    ntc_reboot:
+      platform: cisco_ios_ssh
+      username: "{{ ansible_user }}"
+      password: "{{ ansible_password }}"
+      host: "{{ ansible_host }}"
+      confirm: true
+      timer: 15
+```
+
+This will reboot the device in 15 minutes, unless the `reload cancel` command is applied.
+
+To use the `ntc-ansible` modules, they must be in the ansible library path. They are initially downloaded the the Vagrant user's home directory. There are a few options here:
+
+1. Move the library directory into the root of the playbooks directory:
+    ```
+    mv /home/vagrant/ntc-ansible/library /home/vagrant/shared/playbooks_dir
+    ```
+2. Set up a symlink to the ntc-ansible library:
+    ```
+    ln -sn /home/vagrant/ntc-ansible/library /home/vagrant/shared/playbooks_dir/library
+    ```
+3. Add a line to the `ansible.cfg` file pointing to the ntc-ansible library:
+    ```
+    [defaults]
+    library = ../../ntc-ansible/library
+    ```
+
 ## Known Issues
 
 ### Paramiko

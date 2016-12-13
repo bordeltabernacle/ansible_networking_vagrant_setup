@@ -35,6 +35,11 @@ sudo apt-get -y install build-essential \
                         libffi-dev \
                         python-dev
 
+# https://github.com/networktocode/ntc-ansible/issues/126
+sudo apt-get -y install zlib1g-dev \
+                        libxml2-dev \
+                        
+
 echo "+--------------------------+"
 echo "| Installing python-pip... |"
 echo "+--------------------------+"
@@ -45,6 +50,9 @@ echo "+--------------------------------+"
 echo "| Installing requirements.txt... |"
 echo "+--------------------------------+"
 sudo -H pip install -r $VAGRANT_HOME/shared/requirements.txt
+
+git clone https://github.com/networktocode/ntc-ansible --recursive
+mv ./ntc-ansible $VAGRANT_HOME/
 
 echo "+------------------------------------------------+"
 echo "| Ansible Networking Vagrant Machine Provisioned |"

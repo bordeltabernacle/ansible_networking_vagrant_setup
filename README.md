@@ -73,7 +73,9 @@ during file operations.
 
 ### Paramiko
 
-Paramiko is pinned to a 2.0.2 release due to [this issue](https://github.com/paramiko/paramiko/issues/859)
+Paramiko is currently version 2.1.1
+
+Paramiko was previously pinned to a 2.0.2 release due to [this issue](https://github.com/paramiko/paramiko/issues/859)
 
 Paramiko was previously pinned to a 1.17 release as a backward incompatible change was
 introduced with the release of version 2, issue [#15665](https://github.com/ansible/ansible/issues/15665). If you are having issues, then do try downgrading your paramiko version:

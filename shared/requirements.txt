@@ -1,4 +1,4 @@
-ansible==2.2.0.0
+ansible==2.1
 cffi==1.9.1
 coverage==4.2
 cryptography==1.7

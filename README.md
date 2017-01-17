@@ -1,4 +1,4 @@
-# Ansible Networking Vagrant Setup
+# Cisco Network Automation with Ansible & Vagrant
 
 This is an Ubuntu 16.04 based Vagrant machine for working with Ansible's
 networking modules. It uses the [bento Ubuntu box](https://atlas.hashicorp.com/bento/boxes/ubuntu-16.04) rather than the official Ubuntu box, for [this reason](https://github.com/mitchellh/vagrant/issues/7155#issuecomment-228568200).
@@ -10,7 +10,7 @@ linux VM with Ansible installed.
 A shared folder is created within the Vagrant VM so you can edit playbooks on
 your host and have them accessible by Ansible within the VM.
 
-**Current Ansible version: 2.2.0.0**
+**Current Ansible version: 2.1**
 
 I've only used this with Cisco devices, btw.
 
@@ -21,7 +21,7 @@ The timezone is set to `Europe/London` but can be changed within the
 
 ## Getting Started
 
-I've written a blog post that may be helpful; [Using Vagrant to set up an Ansible Environment](http://bordeltabernacle.netlify.com/post/2016/08/using-vagrant-set-up-ansible-environment/)
+I've written a blog post that may be helpful; [Using Vagrant to set up an Ansible Environment](https://blog.robphoenix.com/post/2016/08/using-vagrant-set-up-ansible-environment/)
 
 ### Install Virtualbox
 
